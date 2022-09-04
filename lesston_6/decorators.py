@@ -1,7 +1,7 @@
 import requests
 import validators
 import functools
-import mail
+import send_mail
 import datetime
 import configuration
 
@@ -60,7 +60,7 @@ def email_sender_decorator(function):
                                                    weather['weather'][0]['main'],
                                                    configuration.weather_icon[weather['weather'][0]['icon']],
                                                    weather['main']['humidity'])
-            mail.mail_sender(list_of_recipient[city], result_string)
+            send_mail.mail_sender(list_of_recipient[city], result_string)
 
     return wrapper
 
